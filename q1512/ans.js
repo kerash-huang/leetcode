@@ -12,7 +12,7 @@ var numIdenticalPairs = function (nums) {
         }
     });
     let count = 0;
-    (Object.values(pairs)).forEach( v => {
+    (Object.values(pairs)).forEach(v => {
         if (v < 2)
             count += v
         else
@@ -20,6 +20,20 @@ var numIdenticalPairs = function (nums) {
     });
     return count;
 };
+
+var numIdenticalPairs = function (nums) {
+    let pairs = {}
+    let count = 0
+    for (let i in nums) {
+        if (typeof pairs[nums[i]] === 'undefined') {
+            pairs[nums[i]] = 1
+        } else {
+            count += pairs[nums[i]]
+            pairs[nums[i]]++
+        }
+    }
+    return count
+}
 
 let nums = [1, 2, 3, 1, 1, 3];
 // nums= [1,2,3]
