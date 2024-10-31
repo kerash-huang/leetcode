@@ -2,13 +2,24 @@
  * @param {string} s
  * @return {number}
  */
-var longestPalindrome = function(s) {
-    let sb = {}
-    for(let c of s) {
-        sb[c] = sb[c] ? sb[c]+1 : 1
-    }  
-    console.log(sb)
-};
+var longestPalindrome = function (s) {
+    var ss = {}
+    for (let c of s) {
+        ss[c] = ss[c] !== undefined ? ss[c] + 1 : 1
+    }
+    var count = 0
+    var hasOdd = false
+    for(const [k, v] of Object.entries(ss)) {
+        count += Math.floor(v / 2) * 2
+        if (v % 2 !== 0) {
+            hasOdd = true
+        } 
+        
+    }
+    return count + (hasOdd ? 1 : 0);
+}
 
-s = "aajaksldj"
-longestPalindrome(s)
+s = "abccccdd"
+s = "a"
+s = "sss"
+console.log(longestPalindrome(s))
